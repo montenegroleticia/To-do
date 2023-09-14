@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 <br />
-{% block title %}Tarefas{% endblock %}
+{% block title %}Taks{% endblock %}
 <br />
 {% block content %}
 <div class="container-task">
@@ -20,21 +20,13 @@
     </button>
   </div>
   <ul class="task-list">
+    {% for task in tasks %}
     <li class="task">
-      <span>Title</span>
+      <span> <a href="/task/{{task.id}}"></a>{{task.title}}</span>
       <span> <i class="fa-regular fa-trash-can"></i> </span>
       <span> <i class="fa-regular fa-edit"></i> </span>
     </li>
-    <li class="task">
-      <span>Title</span>
-      <span> <i class="fa-regular fa-trash-can"></i> </span>
-      <span> <i class="fa-regular fa-edit"></i> </span>
-    </li>
-    <li class="task">
-      <span>Title</span>
-      <span> <i class="fa-regular fa-trash-can"></i> </span>
-      <span> <i class="fa-regular fa-edit"></i> </span>
-    </li>
+    {% endfor %}
   </ul>
 </div>
 {% endblock %}
