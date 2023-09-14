@@ -1,7 +1,40 @@
 {% extends 'base.html' %}
-
-{% block title %}Lista de Tarefas{% endblock %}
-
+<br />
+{% block title %}Tarefas{% endblock %}
+<br />
 {% block content %}
-<h1>Lista de Tarefas</h1>
-{% endblock  %}
+<div class="container-task">
+  <h1>Task List</h1>
+  <div class="add-search">
+    <button>
+      Add Task
+      <i class="fa-solid fa-circle-plus"></i>
+    </button>
+    <input
+      type="text"
+      name="search"
+      placeholder="Task name... ex: wash the dishes"
+    />
+    <button class="button-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </div>
+  <ul class="task-list">
+    <li class="task">
+      <span>Title</span>
+      <span> <i class="fa-regular fa-trash-can"></i> </span>
+      <span> <i class="fa-regular fa-edit"></i> </span>
+    </li>
+    <li class="task">
+      <span>Title</span>
+      <span> <i class="fa-regular fa-trash-can"></i> </span>
+      <span> <i class="fa-regular fa-edit"></i> </span>
+    </li>
+    <li class="task">
+      <span>Title</span>
+      <span> <i class="fa-regular fa-trash-can"></i> </span>
+      <span> <i class="fa-regular fa-edit"></i> </span>
+    </li>
+  </ul>
+</div>
+{% endblock %}
