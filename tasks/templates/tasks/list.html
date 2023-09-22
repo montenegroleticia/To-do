@@ -22,7 +22,7 @@
         <li class="task">
           <span><a href="/task/{{ task.id }}">{{ task.title }}</a></span>
           <span><i class="fa-regular fa-trash-can"></i></span>
-          <span><i class="fa-regular fa-edit"></i></span>
+          <a href="edit/{{ task.id }}"><span><i class="fa-regular fa-edit"></i></span></a>
         </li>
       {% endfor %}
     </ul>
