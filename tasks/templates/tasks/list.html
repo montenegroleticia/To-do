@@ -1,32 +1,30 @@
 {% extends 'base.html' %}
 <br />
-{% block title %}Taks{% endblock %}
+{% block title %}
+  Taks
+{% endblock %}
 <br />
 {% block content %}
-<div class="container-task">
-  <h1>Task List</h1>
-  <div class="add-search">
-    <button>
-      Add Task
-      <i class="fa-solid fa-circle-plus"></i>
-    </button>
-    <input
-      type="text"
-      name="search"
-      placeholder="Task name... ex: wash the dishes"
-    />
-    <button class="button-search">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
+  <div class="container-task">
+    <h1>Task List</h1>
+    <div class="add-search">
+      <a href="newtask/">
+        <button>
+          Add Task
+          <i class="fa-solid fa-circle-plus"></i>
+        </button>
+      </a>
+      <input type="text" name="search" placeholder="Task name... ex: wash the dishes" />
+      <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <ul class="task-list">
+      {% for task in tasks %}
+        <li class="task">
+          <span><a href="/task/{{ task.id }}">{{ task.title }}</a></span>
+          <span><i class="fa-regular fa-trash-can"></i></span>
+          <span><i class="fa-regular fa-edit"></i></span>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
-  <ul class="task-list">
-    {% for task in tasks %}
-    <li class="task">
-      <span> <a href="/task/{{task.id}}"></a>{{task.title}}</span>
-      <span> <i class="fa-regular fa-trash-can"></i> </span>
-      <span> <i class="fa-regular fa-edit"></i> </span>
-    </li>
-    {% endfor %}
-  </ul>
-</div>
 {% endblock %}
