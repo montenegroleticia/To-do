@@ -14,8 +14,10 @@
           <i class="fa-solid fa-circle-plus"></i>
         </button>
       </a>
-      <input type="text" name="search" placeholder="Task name... ex: wash the dishes" />
-      <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <form method="GET" id="search-form">
+        <input type="text" name="search" placeholder="Task name... ex: wash the dishes" />
+        <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
     </div>
     {% if messages %}
       <ul class="messages">
@@ -35,17 +37,19 @@
     </ul>
     <div class="pagination">
       <span class="step-links">
-        {% if tasks.has_previous%}
+        {% if tasks.has_previous %}
           <a href="?page={{tasks.previous_page_number}}">
             <i class="fa-regular fa-circle-left"></i>
           </a>
         {% endif %}
       </span>
       <span class="current">
-        {{tasks.number}} of {{tasks.paginator.num_pages}}
+        {% if tasks.paginator.num_pages %}
+          {{tasks.number}} of {{tasks.paginator.num_pages}}
+        {% endif %}
       </span>
       <span class="step-links">
-        {% if tasks.has_next%}
+        {% if tasks.has_next %}
           <a href="?page={{tasks.next_page_number}}">
             <i class="fa-regular fa-circle-right"></i>
           </a>
