@@ -17,11 +17,18 @@
       <input type="text" name="search" placeholder="Task name... ex: wash the dishes" />
       <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
     <ul class="task-list">
       {% for task in tasks %}
         <li class="task">
           <span><a href="/task/{{ task.id }}">{{ task.title }}</a></span>
-          <span><i class="fa-regular fa-trash-can"></i></span>
+          <a href="delete/{{ task.id }}"><span><i class="fa-regular fa-trash-can"></i></span></a>
           <a href="edit/{{ task.id }}"><span><i class="fa-regular fa-edit"></i></span></a>
         </li>
       {% endfor %}
