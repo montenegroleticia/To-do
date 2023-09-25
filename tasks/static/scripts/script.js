@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    var deleteBtn = $('.delete-btn');
-    var searchBtn = $('.search-bnt');
-    var searchForm = $('#search-form');
+    let deleteBtn = $('.delete-btn');
+    let searchBtn = $('.search-bnt');
+    let searchForm = $('#search-form');
 
     $(deleteBtn).on('click', function (e) {
 
