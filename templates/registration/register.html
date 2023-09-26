@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+<br />
+{% block title %}
+  Register
+{% endblock %}
+<br />
+{% block content %}
+  <div class="col-md-4 offset-md-4">
+    <div class="card auth-card">
+      <div class="card-body">
+        <h4 class="card-title text-center">Register</h4>
+
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ next }}" />
+
+          {{ form|crispy }}
+
+          <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+
+        <p class="change-form-p">
+          Do you want to make login? <a href="/accounts/login">Click here!</a>
+        </p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -10,7 +10,7 @@
     <div class="col-md-4 offset-md-4">
       <div class="card auth-card">
         <div class="card-body">
-          <h4 class="card-title text-center">Entrar</h4>
+          <h4 class="card-title text-center">Login</h4>
 
           <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
@@ -18,11 +18,11 @@
 
             {{ form|crispy }}
 
-            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
           </form>
 
           <p class="change-form-p">
-            Quer criar uma conta? <a href="/accounts/register">Clique aqui!</a>
+            Do you want to register? <a href="/accounts/register">Click here!</a>
           </p>
         </div>
       </div>
