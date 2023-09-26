@@ -73,6 +73,13 @@ input {
   width: 40px;
 }
 
+.filter-div {
+  color: cadetblue;
+  padding: 16px;
+  width: 250px;
+  height: auto;
+}
+
 .task-list {
   display: flex;
   flex-direction: column;

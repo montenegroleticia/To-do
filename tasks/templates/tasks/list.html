@@ -19,6 +19,14 @@
         <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
     </div>
+    <div class="col-12 filter-div">
+      <span>Filter by:</span>
+      <select name="filter" id="filter" class="form-control">
+        <option value="">Choose a option</option>
+        <option value=True>Done</option>
+        <option value=False>Doing</option>
+      </select>
+    </div>
     {% if messages %}
       <ul class="messages">
         {% for message in messages %}

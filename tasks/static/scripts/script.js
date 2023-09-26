@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    let baseURL = 'http://127.0.0.1:8000/';
+    let filter = $('#filter');
     let deleteBtn = $('.delete-btn');
     let searchBtn = $('.search-bnt');
     let searchForm = $('#search-form');
@@ -18,4 +20,9 @@ $(document).ready(function () {
     $(searchBtn).on('click', function () {
         searchForm.submit();
     });
+
+    $(filter).change(function () {
+        let filter = $(this).val();
+        window.location.href = baseURL + '?filter=' + filter;
+    })
 });
