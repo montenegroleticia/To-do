@@ -10,16 +10,18 @@ from django.contrib.auth.decorators import login_required
 def health(request):
     return HttpResponse("I'm alive!")
 
+
 @login_required
 def taskList(request):
-    
+
     search = request.GET.get('search')
-    
+
     if search:
-        tasks = Task.objects.filter(title__icontains=search)
+        tasks = Task.objects.filter(title__icontains=search, user=request.user)
     else:
-    
-        tasks_list = Task.objects.all().order_by('-created_at')
+
+        tasks_list = Task.objects.all().order_by(
+            '-created_at').filter(user=request.user)
 
         paginator = Paginator(tasks_list, 3)
         page = request.GET.get('page')
@@ -28,10 +30,12 @@ def taskList(request):
 
     return render(request, 'tasks/list.html', {'tasks': tasks})
 
+
 @login_required
 def taskView(request, id):
     task = get_object_or_404(Task, pk=id)
     return render(request, 'tasks/task.html', {'task': task})
+
 
 @login_required
 def newTask(request):
@@ -41,11 +45,13 @@ def newTask(request):
         if form.is_valid():
             task = form.save(commit=False)
             task.done = False
+            task.user = request.user
             task.save()
             return redirect('/')
     else:
         form = TaskForm()
         return render(request, 'tasks/newtask.html', {'form': form})
+
 
 @login_required
 def editTask(request, id):
@@ -62,6 +68,7 @@ def editTask(request, id):
             return render(request, 'tasks/edittask.html', {'form': form, 'task': task})
     else:
         return render(request, 'tasks/edittask.html', {'form': form, 'task': task})
+
 
 @login_required
 def deleteTask(request, id):
