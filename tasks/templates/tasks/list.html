@@ -7,6 +7,20 @@
 {% block content %}
   <div class="container-task">
     <h1>Task List</h1>
+    <div class="dashboard">
+      <div class="col-4 dashboard-box" id="dashboard-lastdays" >
+        <h4>Completed - last 30 days</h4>
+        <span>{{ tasksDoneRecently }}</span>
+      </div>
+      <div class="col-4 dashboard-box" id="dashboard-done" >
+        <h4>Tasks completed</h4>
+        <span>{{ tasksDone }}</span>
+      </div>
+      <div class="col-4 dashboard-box" id="dashboard-doing" >
+        <h4>Tasks to complete</h4>
+        <span>{{ tasksDoing }}</span>
+      </div>
+    </div>
     <div class="add-search">
       <a href="newtask/">
         <button>

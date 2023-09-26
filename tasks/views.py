@@ -5,6 +5,7 @@ from .models import Task
 from .forms import TaskForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+import datetime
 
 
 def health(request):
@@ -16,6 +17,10 @@ def taskList(request):
 
     search = request.GET.get('search')
     filter = request.GET.get('filter')
+    tasksDoneRecently = Task.objects.filter(
+        done=True, updated_at__gt=datetime.datetime.now()-datetime.timedelta(days=30), user=request.user).count()
+    tasksDone = Task.objects.filter(done=True, user=request.user).count()
+    tasksDoing = Task.objects.filter(done=False, user=request.user).count()
 
     if search:
         tasks = Task.objects.filter(title__icontains=search, user=request.user)
@@ -30,7 +35,7 @@ def taskList(request):
 
         tasks = paginator.get_page(page)
 
-    return render(request, 'tasks/list.html', {'tasks': tasks})
+    return render(request, 'tasks/list.html', {'tasks': tasks, 'tasksDoneRecently': tasksDoneRecently, 'tasksDone': tasksDone, 'tasksDoing': tasksDoing})
 
 
 @login_required
