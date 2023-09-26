@@ -23,6 +23,19 @@
 
 a {
   text-decoration: none;
+  color: cadetblue;
+}
+
+a .fa-trash-can {
+  color: rgb(250, 118, 118);
+}
+
+a .fa-edit {
+  color: rgb(67, 89, 187);
+}
+
+.done a .fa-square-check {
+  color: rgb(61, 138, 51);
 }
 
 h1 {
@@ -44,14 +57,14 @@ button {
 
   border-radius: 8px;
   border: transparent;
-  background-color: #64c3cc;
+  background-color: cadetblue;
 
   color: #fff;
   font-size: 16px;
 }
 
 button:hover {
-  background-color: #63ced8;
+  background-color: #64c3cc;
 }
 
 form {
@@ -80,10 +93,19 @@ input {
   height: auto;
 }
 
+select {
+  color: cadetblue;
+}
+
+select option {
+  color: cadetblue;
+}
+
 .task-list {
   display: flex;
   flex-direction: column;
   padding-left: 0;
+  gap: 8px;
 }
 
 .task {
@@ -91,8 +113,12 @@ input {
   font-size: 16px;
   width: 300px;
   height: 50px;
-  border-bottom: 1px solid cadetblue;
+  padding: 16px;
+  border: 1px solid cadetblue;
   border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .task.done {
