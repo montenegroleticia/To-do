@@ -78,3 +78,17 @@ def deleteTask(request, id):
     messages.info(request, 'Task deleted with sucess')
 
     return redirect('/')
+
+
+@login_required
+def status(request, id):
+    task = get_object_or_404(Task, pk=id)
+
+    if task.done == False:
+        task.done = True
+    else:
+        task.done = False
+
+    task.save()
+
+    return redirect('/')
